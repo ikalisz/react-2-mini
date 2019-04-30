@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-export default class FamilyChanger extends Component {
-  render() {
+export default function FamilyChanger(props) {
     return (
-      <select className="dropDownContainer">
+      <select onChange={(e) => props.update(e.target.value)} className="dropDownContainer" disabled={props.allowEdit === "false"}>
         <option value="monospace"> Monospace </option>
         <option value="arial"> Arial </option>
         <option value="courier"> Courier </option>
       </select>
     );
   }
-}
