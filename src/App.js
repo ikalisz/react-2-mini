@@ -15,7 +15,7 @@ class App extends Component {
     fontColor: 'black',
     fontSize: 12,
     fontFamily: 'monospace',
-    allowEdit: 'true'
+    allowEdit: false
   }
   }
   // updateColor
@@ -32,16 +32,16 @@ class App extends Component {
   }
   // updateEditStatus
   updateEditStatus = (val) => {
-    this.setState({allowEdit: val})
+    this.setState({allowEdit: !this.state.allowEdit})
   }
   render() {
     return (
       <div>
         <div className="headerBar">
           <EditToggle update={this.updateEditStatus} />
-          <ColorChanger update={this.updateColor} allowEdit={this.allowEdit}/>
-          <SizeChanger update={this.updateSize} allowEdit={this.allowEdit}/>
-          <FamilyChanger update={this.updateFamily} allowEdit={this.allowEdit}/>
+          <ColorChanger update={this.updateColor} allowEdit={this.state.allowEdit}/>
+          <SizeChanger update={this.updateSize} allowEdit={this.state.allowEdit}/>
+          <FamilyChanger update={this.updateFamily} allowEdit={this.state.allowEdit}/>
         </div>
         <div className="textArea"><TextContainer fontColor={this.state.fontColor} fontSize={this.state.fontSize} fontFamily={this.state.fontFamily}/></div>
       </div>
